@@ -41,7 +41,17 @@ GradeCalculator-MiniProgram
 
 ## Screenshots
 
+### Home Page
 
+![Home Page](screenshots/home.png)
+
+### Calculation Result 1
+
+![Result 1](screenshots/result1.png)
+
+### Calculation Result 2
+
+![Result 2](screenshots/result2.png)
 
 ## Future Improvements
 
