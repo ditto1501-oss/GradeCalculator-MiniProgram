@@ -1,0 +1,79 @@
+/**index.wxss**/
+page {
+  background-color: #f4f6f8;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40rpx;
+  box-sizing: border-box;
+}
+
+.calculator-card {
+  width: 100%;
+  padding: 50rpx 40rpx;
+  background-color: white;
+  border-radius: 24rpx;
+  box-sizing: border-box;
+  box-shadow: 0 12rpx 36 rpx rgba(0，0，0，0.08);
+}
+
+.title {
+  display: block;
+  margin-bottom: 40rpx;
+  text-align: center;
+  font-size: 42rpx;
+  font-weight: bold;
+  color: #222222;
+}
+
+.score-input {
+  width: 100%;
+  height: 88rpx;
+  margin-top: 24rpx;
+  padding: 0 28rpx;
+  background-color: #f5f6f8;
+  border-radius: 16rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+}
+
+.result-card {
+  margin-top: 36rpx;
+  padding: 30rpx;
+  text-align: center;
+  background-color: #f5f6f8;
+  border-radius: 16rpx;
+}
+
+.result-score{
+  display: block;
+  font-size: 38rpx;
+  font-weight: bold;
+  color: #222222;
+}
+
+.grade-text {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.pass{
+  color: #19a974;
+}
+
+.fail{
+  color: #e05252;
+}
+
+.calculator-button{
+  margin-top: 36rpx;
+  color: white;
+  background-color: #1677ff;
+  border-radius: 16rpx;
+}
