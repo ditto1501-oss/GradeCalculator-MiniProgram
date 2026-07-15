@@ -10,7 +10,7 @@
     </button>
 
     <button 
-    class="class-button"
+    class="clear-button"
     bindtap="clearForm">
       清空重填
     </button>
