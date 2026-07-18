@@ -3,15 +3,20 @@
     <text class="title">{{motto}}</text>
     <input class="score-input" type="number" placeholder="请输入平时成绩" value="{{usualScore}}" bindinput="onUsualInput" />
     <input class="score-input" type="number" placeholder="请输入期末成绩" value="{{finalScore}}" bindinput="onFinalInput" />
-    <button 
-    class="calculator-button"
-    bindtap="calculateScore">
+
+    <view class="weight-section">
+      <text class="weight-title">成绩权重</text>
+
+      <input class="score-input" type="number" placeholder="平时成绩权重" value="{{usualWeight}}" bindinput="onUsualWeightInput" />
+
+      <input class="score-input" type="number" placeholder="期末成绩权重" value="{{finalWeight}}" bindinput="onFinalWeightInput" />
+    </view>
+
+    <button class="calculator-button" bindtap="calculateScore">
       计算总成绩
     </button>
 
-    <button 
-    class="clear-button"
-    bindtap="clearForm">
+    <button class="clear-button" bindtap="clearForm">
       清空重填
     </button>
 

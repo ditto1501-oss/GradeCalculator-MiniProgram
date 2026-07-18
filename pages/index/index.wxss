@@ -18,7 +18,7 @@ page {
   background-color: white;
   border-radius: 24rpx;
   box-sizing: border-box;
-  box-shadow: 0 12rpx 36rpx rgba(0,0,0,0.08);
+  box-shadow: 0 12rpx 36rpx rgba(0, 0, 0, 0.08);
 }
 
 .title {
@@ -49,7 +49,7 @@ page {
   border-radius: 16rpx;
 }
 
-.result-score{
+.result-score {
   display: block;
   font-size: 38rpx;
   font-weight: bold;
@@ -63,22 +63,22 @@ page {
   font-weight: bold;
 }
 
-.pass{
+.pass {
   color: #19a974;
 }
 
-.fail{
+.fail {
   color: #e05252;
 }
 
-.calculator-button{
+.calculator-button {
   margin-top: 36rpx;
   color: white;
   background-color: #1677ff;
   border-radius: 16rpx;
 }
 
-.clear-button{
+.clear-button {
   margin-top: 20rpx;
   background-color: #f1eaea;
   color: #666666;
@@ -87,6 +87,6 @@ page {
   font-size: 30rpx;
 }
 
-.clear-button::after{
+.clear-button::after {
   border: none;
 }
