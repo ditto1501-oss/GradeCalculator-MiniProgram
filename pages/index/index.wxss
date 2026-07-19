@@ -135,8 +135,8 @@ page {
   margin-top: 16rpx;
   background-color: transparent;
   color: #e05252;
-  border: 2rpx soild #f0b8b8;
-  border-radius: 12 rpx;
+  border: 2rpx solid #f0b8b8;
+  border-radius: 12rpx;
   font-size: 26rpx;
 }
 
