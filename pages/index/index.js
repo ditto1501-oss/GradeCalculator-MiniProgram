@@ -1,24 +1,24 @@
 Page({
   data: {
     motto: '课程成绩计算器',
+    courseName: '',
     usualScore: '',
     finalScore: '',
-    totalScore: '',
-    gradeLevel: '',
     usualWeight: '40',
     finalWeight: '60',
-    courseName: '',
+    totalScore: '',
+    gradeLevel: '',
     records: []
   },
 
-  onLoad(){
+  onLoad() {
     const records = wx.getStorageSync('courseRecords') || []
     this.setData({
-      records:records
+      records: records
     })
   },
 
-  onCourseNameInput(event){
+  onCourseNameInput(event) {
     this.setData({
       courseName: event.detail.value,
       totalScore: '',
@@ -72,19 +72,19 @@ Page({
     }
     const usual = Number(usualText)
     const final = Number(finalText)
-    
-    if(!Number.isFinite(usual) || !Number.isFinite(final)) {
+
+    if (!Number.isFinite(usual) || !Number.isFinite(final)) {
       wx.showToast({
-        title:'请输入正确的成绩',
+        title: '请输入正确的成绩',
         icon: 'none'
       })
       return
     }
 
-    if(usualWeightText === '' || finalWeightText === '') {
+    if (usualWeightText === '' || finalWeightText === '') {
       wx.showToast({
-        title:'请填写两项权重',
-        icon:'none'
+        title: '请填写两项权重',
+        icon: 'none'
       })
       return
     }
@@ -100,9 +100,9 @@ Page({
       return
     }
 
-    if(usualWeight < 0 || usualWeight > 100 || finalWeight < 0 || finalWeight > 100){
+    if (usualWeight < 0 || usualWeight > 100 || finalWeight < 0 || finalWeight > 100) {
       wx.showToast({
-        title:'权重必须在0~100之间',
+        title: '权重必须在0~100之间',
         icon: 'none'
       })
       return
@@ -125,31 +125,36 @@ Page({
     }
 
     const total = usual * (usualWeight / 100) + final * (finalWeight / 100)
+
+    const roundedTotal = Number(total.toFixed(1))
+
     let gradeLevel = ''
-    if (total >= 90) {
+
+    if (roundedTotal >= 90) {
       gradeLevel = '优秀'
-    } else if (total >= 80) {
+    } else if (roundedTotal >= 80) {
       gradeLevel = '良好'
-    } else if (total >= 70) {
+    } else if (roundedTotal >= 70) {
       gradeLevel = '中等'
-    } else if (total >= 60) {
+    } else if (roundedTotal >= 60) {
       gradeLevel = '及格'
     } else {
       gradeLevel = '不及格'
     }
+
     this.setData({
-      totalScore: total.toFixed(1),
+      totalScore: roundedTotal.toFixed(1),
       gradeLevel: gradeLevel
     })
   },
 
-  saveRecord(){
+  saveRecord() {
     const courseName = this.data.courseName.trim()
 
-    if(courseName === ''){
+    if (courseName === '') {
       wx.showToast({
-        title:'请输入课程名称',
-        icon:'none'
+        title: '请输入课程名称',
+        icon: 'none'
       })
       return
     }
@@ -169,7 +174,7 @@ Page({
 
     records.unshift(record)
 
-    wx.setStorageSync('courseRecords',records)
+    wx.setStorageSync('courseRecords', records)
 
     this.setData({
       records: records
@@ -189,7 +194,7 @@ Page({
       content: '该条课程记录将被删除',
 
       success: result => {
-        if(!result.confirm) {
+        if (!result.confirm) {
           return
         }
 
@@ -197,10 +202,10 @@ Page({
           return String(record.id) !== String(id)
         })
 
-        wx.setStorageSync('courseRecords',records)
+        wx.setStorageSync('courseRecords', records)
 
         this.setData({
-          records: records 
+          records: records
         })
 
         wx.showToast({
