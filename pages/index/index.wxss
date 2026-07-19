@@ -58,7 +58,7 @@ page {
 
 .grade-text {
   display: block;
-  margin-top: 16rpx;
+  margin-top: 5rpx;
   font-size: 30rpx;
   font-weight: bold;
 }
@@ -140,6 +140,18 @@ page {
   font-size: 26rpx;
 }
 
-.delete-button::after{
-  border:none;
+.delete-button::after {
+  border: none;
+}
+
+.save-button {
+  margin-top: 20rpx;
+  background-color: #eef9f1;
+  color: #238636;
+  border-radius: 22rpx;
+  border: 5rpx solid #b7dfc2;
+}
+
+.save-button::after {
+  border: none;
 }
