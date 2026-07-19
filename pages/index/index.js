@@ -6,29 +6,55 @@ Page({
     totalScore: '',
     gradeLevel: '',
     usualWeight: '40',
-    finalWeight: '60'
+    finalWeight: '60',
+    courseName: '',
+    records: []
   },
+
+  onLoad(){
+    const records = wx.getStorageSync('courseRecords') || []
+    this.setData({
+      records:records
+    })
+  },
+
+  onCourseNameInput(event){
+    this.setData({
+      courseName: event.detail.value,
+      totalScore: '',
+      gradeLevel: ''
+    })
+  },
+
   onUsualInput(event) {
     this.setData({
-      usualScore: event.detail.value
+      usualScore: event.detail.value,
+      totalScore: '',
+      gradeLevel: ''
     })
   },
 
   onFinalInput(event) {
     this.setData({
-      finalScore: event.detail.value
+      finalScore: event.detail.value,
+      totalScore: '',
+      gradeLevel: ''
     })
   },
 
   onUsualWeightInput(event) {
     this.setData({
-      usualWeight: event.detail.value
+      usualWeight: event.detail.value,
+      totalScore: '',
+      gradeLevel: ''
     })
   },
 
   onFinalWeightInput(event) {
     this.setData({
-      finalWeight: event.detail.value
+      finalWeight: event.detail.value,
+      totalScore: '',
+      gradeLevel: ''
     })
   },
 
@@ -47,6 +73,14 @@ Page({
     const usual = Number(usualText)
     const final = Number(finalText)
     
+    if(!Number.isFinite(usual) || !Number.isFinite(final)) {
+      wx.showToast({
+        title:'请输入正确的成绩',
+        icon: 'none'
+      })
+      return
+    }
+
     if(usualWeightText === '' || finalWeightText === '') {
       wx.showToast({
         title:'请填写两项权重',
@@ -108,10 +142,80 @@ Page({
       gradeLevel: gradeLevel
     })
   },
+
+  saveRecord(){
+    const courseName = this.data.courseName.trim()
+
+    if(courseName === ''){
+      wx.showToast({
+        title:'请输入课程名称',
+        icon:'none'
+      })
+      return
+    }
+
+    const record = {
+      id: Date.now(),
+      courseName: courseName,
+      usualScore: Number(this.data.usualScore),
+      finalScore: Number(this.data.finalScore),
+      usualWeight: Number(this.data.usualWeight),
+      finalWeight: Number(this.data.finalWeight),
+      totalScore: this.data.totalScore,
+      gradeLevel: this.data.gradeLevel
+    }
+
+    const records = wx.getStorageSync('courseRecords') || []
+
+    records.unshift(record)
+
+    wx.setStorageSync('courseRecords',records)
+
+    this.setData({
+      records: records
+    })
+
+    wx.showToast({
+      title: '保存成功',
+      icon: 'success'
+    })
+  },
+
+  deleteRecord(event) {
+    const id = event.currentTarget.dataset.id
+
+    wx.showModal({
+      title: "删除记录",
+      content: '该条课程记录将被删除',
+
+      success: result => {
+        if(!result.confirm) {
+          return
+        }
+
+        const records = this.data.records.filter(record => {
+          return String(record.id) !== String(id)
+        })
+
+        wx.setStorageSync('courseRecords',records)
+
+        this.setData({
+          records: records 
+        })
+
+        wx.showToast({
+          title: '删除成功',
+          icon: 'success'
+        })
+      }
+    })
+  },
+
   clearForm() {
     this.setData({
       usualScore: '',
       finalScore: '',
+      courseName: '',
       totalScore: '',
       gradeLevel: ''
     })

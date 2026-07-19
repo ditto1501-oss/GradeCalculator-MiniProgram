@@ -6,7 +6,7 @@ page {
 .container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 100vh;
   padding: 40rpx;
   box-sizing: border-box;
@@ -89,4 +89,57 @@ page {
 
 .clear-button::after {
   border: none;
+}
+
+.history-section {
+  width: 100%;
+  margin-top: 32rpx;
+  padding: 30rpx;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 24rpx;
+}
+
+.history-title {
+  display: block;
+  margin-bottom: 20rpx;
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.empty-history {
+  padding: 30rpx 0;
+  text-align: center;
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.history-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+  margin-top: 18rpx;
+  padding: 24rpx;
+  background-color: #f7f8fa;
+  border-radius: 16rpx;
+}
+
+.history-item text {
+  display: block;
+  font-size: 28rpx;
+  color: #555555;
+}
+
+.delete-button {
+  margin-top: 16rpx;
+  background-color: transparent;
+  color: #e05252;
+  border: 2rpx soild #f0b8b8;
+  border-radius: 12 rpx;
+  font-size: 26rpx;
+}
+
+.delete-button::after{
+  border:none;
 }
